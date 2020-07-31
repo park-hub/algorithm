@@ -1,0 +1,56 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Main
+{
+	// 배열 a의 앞쪽 n개의 요소에서 key와 같은 요소를 선형 검색 
+	static int seqSearch(int[] x, int num, int key) {
+		int i = 0;
+		System.out.println("  |0 1 2 3 4 5 6");
+		System.out.println("----------------");
+	    for (i = 0; i < num; i++) {
+	        System.out.print(i+"|");
+	        for (int j = 0; j < num; j++) {
+	            if(j==i){
+	                System.out.print("* ");
+	            }else{
+	                System.out.print("  ");
+	            }
+	    	}
+	    	System.out.println();
+	    	System.out.print(" |");
+	        for (int j = 0; j < num; j++) {
+			    System.out.print(x[j] +" ");
+	    	}
+			System.out.println();
+		   if(key==x[i]){
+                break;
+            }
+		}
+        return i == num ? -1 : i;
+	}
+
+	public static void main(String[] args) {
+		Scanner stdIn = new Scanner(System.in);
+
+		System.out.print("요솟수：7");
+		int num = 7;
+		int[] x = {6,4,3,2,1,9,8};		// 요솟수가 num인 배열
+        
+
+
+		System.out.println("검색할 값：3");		// 키 값을 입력
+		int ky =3;
+
+		int idx = seqSearch(x, num, ky);	// 배열x에서 키 값이 ky인 요소를 검색
+
+		if (idx == -1)
+			System.out.println("그 값의 요소가 없습니다.");
+		else
+			System.out.println(ky+"은(는) x[" + idx + "]에 있습니다.");
+	}
+}

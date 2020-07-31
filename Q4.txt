@@ -1,0 +1,66 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Main
+{
+	static int binSearch(int[] a, int n, int key) {
+	    
+		int pl = 0;			// 검색 범위의 첫 인덱스
+		int pr = n - 1;		// 검색 범위의 끝 인덱스
+		System.out.println("  |0 1 2 3 4 5 6");
+		System.out.println("----------------");
+		do {
+			int pc = (pl + pr) / 2;		// 중앙 요소의 인덱스
+			System.out.print(pc+"|");
+    		for (int i = 0; i <n; i++) {
+    		    if(i==pc){
+    		        System.out.print("+ ");
+    		    }else if(i==pl){
+    		        System.out.print("<-");
+    		    }else if(i==pr){
+    		        System.out.print("->");
+    		    }else{
+    		        System.out.print("  ");
+    		    }
+    		}
+    		System.out.println();
+    		System.out.print(" |");
+    		for (int i = 0; i <n; i++) {
+		        System.out.print(a[i]+" ");
+    		}
+    		System.out.println();
+			if (a[pc] == key)
+				return pc;				// 검색 성공!
+			else if (a[pc] < key)
+				pl = pc + 1;			// 검색 범위를 뒤쪽 절반으로 좁힘
+			else
+				pr = pc - 1;			// 검색 범위를 앞쪽 절반으로 좁힘
+		} while (pl <= pr);
+
+		return -1;						// 검색 실패!
+	}
+
+	public static void main(String[] args) {
+		Scanner stdIn = new Scanner(System.in);
+
+		System.out.print("요솟수：7");
+		int num = 7;
+		int[] x = {1,2,3,5,6,8,9};		// 요솟수가 num인 배열
+        
+
+
+		System.out.println("검색할 값：2");		// 키 값을 입력
+		int ky =2;
+
+		int idx = binSearch(x, num, ky);	// 배열x에서 키 값이 ky인 요소를 검색
+
+		if (idx == -1)
+			System.out.println("그 값의 요소가 없습니다.");
+		else
+			System.out.println(ky+"은(는) x[" + idx + "]에 있습니다.");
+	}
+}
